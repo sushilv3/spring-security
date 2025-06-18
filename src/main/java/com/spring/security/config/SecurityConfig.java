@@ -23,6 +23,7 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers("/h2-console/").permitAll()
+                                .requestMatchers("/authenticate").permitAll()
                                 .anyRequest().authenticated()).// authenticated all request
                 httpBasic(withDefaults());//      this is for enable basic authentication
         return http.build();
