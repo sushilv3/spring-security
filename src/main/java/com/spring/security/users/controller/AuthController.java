@@ -20,12 +20,12 @@ public class AuthController {
     @PostMapping("/authenticate")
     public String generateToken(@RequestBody AuthRequest authRequest) {
         try {
+            //authenticate or validate user
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())
             );
-            //create jwt token
+            //generate jwt token
             return jwtUtil.generateToken(authRequest.getUsername());
-//            return "jwt token";
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

@@ -11,26 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/users")
 public class UserController {
 
-//    @Autowired
-//    private UserService userService;
-
-//    @PostMapping
-//    public User createUser(@RequestBody User user) {
-//        return userService.createUser(user);
-//    }
-
-//    @GetMapping("/{id}")
-//    public User getUser(@PathVariable Long id) {
-//        return userService.getUserById(id);
-//    }
-
-    //    @GetMapping
-//    public List<User> getAllUsers() {
-//        return userService.getAllUsers();
-//    }
     @GetMapping("/")
-    public ResponseEntity getUser() {
-        return new ResponseEntity("hello user ", HttpStatus.OK);
+    public String getUser() {
+        return "hello user";
     }
 
 //    @PutMapping("/{id}")
