@@ -13,7 +13,7 @@ import java.util.Date;
 @Component
 public class JWTUtil {
     private final long EXPIRATION_TIME = 1000 * 60 * 60;
-    private final String SECRET = "my-super-key-that-enough-long-1234567890!@#$%";
+    private final String SECRET = "my-super-secret-key-that-is-long-enough-1234567890!@#";
     private final SecretKey key = Keys.hmacShaKeyFor(SECRET.getBytes());
 
     public String generateToken(String username) {
