@@ -1,10 +1,13 @@
 package com.spring.security.config;
 
 import com.spring.security.filters.JwtAuthFilter;
+import com.spring.security.users.modal.Permissions;
+import com.spring.security.users.modal.Role;
 import com.spring.security.users.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -32,7 +35,10 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers("/authenticate").permitAll()
-                                .requestMatchers("/api/users").hasRole("ADMIN")
+                                .requestMatchers("/api/user/**").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET,"/demo/**").hasAuthority(Permissions.DEMO_READ.name())
+                                .requestMatchers(HttpMethod.POST,"/demo/**").hasAuthority(Permissions.DEMO_WRITE.name())
+                                .requestMatchers(HttpMethod.DELETE,"/demo/**").hasAuthority(Permissions.DEMO_DELETE.name())
 //                                .requestMatchers("/demo").hasRole("ADMIN")
                                 .anyRequest().authenticated());// authenticated all request
         http.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class); //added auth filter

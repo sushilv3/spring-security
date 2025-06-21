@@ -5,24 +5,25 @@ import com.spring.security.users.modal.DemoModel;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/demo")
 public class DemoController {
-    @GetMapping("/demo")
+    @GetMapping
     public String demoGet() {
         return "demo";
     }
 
-    @PostMapping("/demo")
+    @PostMapping
     public String demoPost(@RequestBody DemoModel model) {
         System.out.println("Post api called : ");
         return "post demo :" + model;
     }
 
-    @PutMapping("/demo/{id}")
+    @PutMapping("/{id}")
     public String demoPut(@PathVariable String id) {
         return "put demo : " + id;
     }
 
-    @DeleteMapping("/demo/{id}")
+    @DeleteMapping("/{id}")
     public String demo(@PathVariable String id) {
         return "delete demo : " + id;
     }
