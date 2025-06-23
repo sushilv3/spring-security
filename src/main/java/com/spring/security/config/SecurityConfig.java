@@ -36,7 +36,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers("/authenticate").permitAll()
                                 .requestMatchers("/api/user/**").hasRole("ADMIN")
-                                .requestMatchers(HttpMethod.GET,"/demo/**").hasAuthority(Permissions.DEMO_READ.name())
+//                                .requestMatchers(HttpMethod.GET,"/demo/**").hasAuthority(Permissions.DEMO_READ.name())
                                 .requestMatchers(HttpMethod.POST,"/demo/**").hasAuthority(Permissions.DEMO_WRITE.name())
                                 .requestMatchers(HttpMethod.DELETE,"/demo/**").hasAuthority(Permissions.DEMO_DELETE.name())
 //                                .requestMatchers("/demo").hasRole("ADMIN")

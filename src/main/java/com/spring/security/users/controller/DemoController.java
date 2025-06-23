@@ -2,12 +2,15 @@ package com.spring.security.users.controller;
 
 import com.spring.security.users.modal.AuthRequest;
 import com.spring.security.users.modal.DemoModel;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/demo")
 public class DemoController {
+
     @GetMapping
+    @PreAuthorize("hasAuthority('DEMO_READ')")
     public String demoGet() {
         return "demo";
     }

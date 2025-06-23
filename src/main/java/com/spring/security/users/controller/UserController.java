@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/users")
 public class UserController {
 
-    @GetMapping()
+//    @GetMapping("hasAuthority(DEMO_READ)")
     public String getUser() {
         return "hello user";
     }
